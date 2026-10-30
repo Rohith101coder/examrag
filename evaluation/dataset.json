@@ -1,0 +1,81 @@
+[
+  {
+    "id": "eval_01",
+    "question": "What is process scheduling and what are the main objectives of a CPU scheduler?",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [1, 2],
+    "expected_key_facts": [
+      "Process scheduling",
+      "CPU allocation",
+      "throughput",
+      "turnaround time",
+      "waiting time"
+    ],
+    "reference_answer": "Process scheduling is the mechanism by which the OS decides which ready process is allocated CPU execution time to maximize CPU utilization and throughput while minimizing waiting time.",
+    "is_supported": true
+  },
+  {
+    "id": "eval_02",
+    "question": "Explain Round Robin scheduling algorithm with its advantages and limitations.",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [3],
+    "expected_key_facts": [
+      "time quantum",
+      "preemptive",
+      "fairness",
+      "context switch overhead",
+      "starvation free"
+    ],
+    "reference_answer": "Round Robin scheduling assigns a fixed time quantum to each ready process in a cyclic order. It provides fairness and prevents starvation, but small time quanta induce high context switching overhead.",
+    "is_supported": true
+  },
+  {
+    "id": "eval_03",
+    "question": "What is a Deadlock and what are the four Coffman conditions necessary for deadlock to occur?",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [5, 6],
+    "expected_key_facts": [
+      "Mutual Exclusion",
+      "Hold and Wait",
+      "No Preemption",
+      "Circular Wait"
+    ],
+    "reference_answer": "A deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource held by another process. The four conditions are mutual exclusion, hold and wait, no preemption, and circular wait.",
+    "is_supported": true
+  },
+  {
+    "id": "eval_04",
+    "question": "What is Paging in virtual memory and how does a Translation Lookaside Buffer (TLB) improve performance?",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [8, 9],
+    "expected_key_facts": [
+      "fixed-size pages",
+      "frames",
+      "page table",
+      "TLB cache",
+      "hit ratio",
+      "memory access time"
+    ],
+    "reference_answer": "Paging is a memory management scheme that divides physical memory into fixed-size frames and logical memory into pages. A TLB acts as a hardware cache for page table translations, dramatically reducing effective memory access time.",
+    "is_supported": true
+  },
+  {
+    "id": "eval_05",
+    "question": "Explain Grover's quantum search algorithm and its quadratic speedup over classical algorithms.",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [],
+    "expected_key_facts": [],
+    "reference_answer": "Abstain: The indexed operating systems document does not cover quantum computing or Grover's algorithm.",
+    "is_supported": false
+  },
+  {
+    "id": "eval_06",
+    "question": "Explain the architectural construction techniques of Roman aqueducts in 100 BCE.",
+    "document_ids": ["doc_sample_os"],
+    "relevant_pages": [],
+    "expected_key_facts": [],
+    "reference_answer": "Abstain: The indexed material does not contain civil engineering or historical architecture information.",
+    "is_supported": false
+  }
+]
+

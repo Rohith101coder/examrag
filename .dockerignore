@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+
+# Environment & Credentials
+.env
+.env.*
+!.env.example
+
+# Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local documents and virtual environments
+venv/
+.venv/
+caiModel.pdf
+*.pdf
+scratch/
+tmp/
+tests/
+.idea/
+.vscode/
+
