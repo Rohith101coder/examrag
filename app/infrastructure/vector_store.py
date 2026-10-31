@@ -2,6 +2,7 @@
 
 import logging
 from typing import Any, Dict, List, Optional
+
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from qdrant_client.http.exceptions import UnexpectedResponse
@@ -150,33 +151,37 @@ class QdrantVectorStore:
                     must=[models.FieldCondition(key="document_id", match=models.MatchAny(any=document_ids))]
                 )
 
-        try:
-            # Use query_points or search depending on client version
-            if hasattr(client, "query_points"):
-                response = client.query_points(
-                    collection_name=collection_name,
-                    query=query_vector,
-                    query_filter=query_filter,
-                    limit=top_k,
-                    score_threshold=score_threshold,
-                    with_payload=True
-                )
-                return response.points
-            else:
-                return client.search(
-                    collection_name=collection_name,
-                    query_vector=query_vector,
-                    query_filter=query_filter,
-                    limit=top_k,
-                    score_threshold=score_threshold,
-                    with_payload=True
-                )
-        except UnexpectedResponse as e:
-            logger.error("Qdrant search unexpected response: %s", str(e))
-            raise VectorStoreError(f"Qdrant query failed: {str(e)}") from e
-        except Exception as e:
-            logger.error("Error during Qdrant search: %s", str(e))
-            raise VectorStoreError(f"Vector search failed: {str(e)}") from e
+        for attempt in range(2):
+            try:
+                client = self.get_client()
+                # Use query_points or search depending on client version
+                if hasattr(client, "query_points"):
+                    response = client.query_points(
+                        collection_name=collection_name,
+                        query=query_vector,
+                        query_filter=query_filter,
+                        limit=top_k,
+                        score_threshold=score_threshold,
+                        with_payload=True
+                    )
+                    return response.points
+                else:
+                    return client.search(
+                        collection_name=collection_name,
+                        query_vector=query_vector,
+                        query_filter=query_filter,
+                        limit=top_k,
+                        score_threshold=score_threshold,
+                        with_payload=True
+                    )
+            except UnexpectedResponse as e:
+                logger.error("Qdrant search unexpected response: %s", str(e))
+                raise VectorStoreError(f"Qdrant query failed: {str(e)}") from e
+            except Exception as e:
+                logger.warning("Error during Qdrant search (attempt %d/2): %s", attempt + 1, str(e))
+                self._client = None  # Reset client socket
+                if attempt == 1:
+                    raise VectorStoreError(f"Vector search failed: {str(e)}") from e
 
     def delete_by_document_id(self, document_id: str) -> int:
         """Delete all points belonging to a specific document_id."""

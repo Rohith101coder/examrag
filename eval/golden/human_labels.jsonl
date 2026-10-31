@@ -1,0 +1,20 @@
+{"id": "gold_def_001", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Perfect academic definition of CPU scheduling grounded in page 1."}
+{"id": "gold_def_002", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Accurate convoy effect explanation citing page 2."}
+{"id": "gold_def_003", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Standard Round Robin time quantum definition."}
+{"id": "gold_def_006", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Clear distinction between logical and physical memory address spaces."}
+{"id": "gold_def_007", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "External fragmentation definition cleanly verified against page 2."}
+{"id": "gold_def_010", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Accurate TLB hardware associative cache definition."}
+{"id": "gold_def_013", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Standard race condition and critical section terminology."}
+{"id": "gold_def_015", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Coffman deadlock definition matches canonical textbook formulation."}
+{"id": "gold_fact_001", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "All 5 CPU scheduling criteria correctly enumerated."}
+{"id": "gold_fact_004", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "10-100 ms time quantum range confirmed."}
+{"id": "gold_fact_010", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "First-fit, best-fit, and worst-fit dynamic storage algorithms listed."}
+{"id": "gold_fact_014", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "EMAT mathematical formula accurately grounded in page 4."}
+{"id": "gold_fact_018", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Mutual exclusion, progress, and bounded waiting correctly stated."}
+{"id": "gold_fact_022", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "All four Coffman conditions accurately listed."}
+{"id": "gold_hop_001", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Correct relational connection between large time quantum and FCFS convoy effect."}
+{"id": "gold_hop_004", "human_faithfulness": 4, "human_relevance": 5, "human_correctness": 4, "human_citation": 4, "human_notes": "Multi-hop logic sound; minor variance in phrasing dynamic relocation."}
+{"id": "gold_hop_006", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Multi-hop derivation of TLB miss and PTBR penalty."}
+{"id": "gold_hop_012", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Dining philosophers asymmetric solution breaking circular wait."}
+{"id": "gold_unans_001", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Proper abstention on out-of-domain quantum computing query."}
+{"id": "gold_unans_002", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Proper abstention on Roman aqueduct civil engineering query."}

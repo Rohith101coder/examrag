@@ -1,6 +1,7 @@
 """Schemas for RAG chat query requests, structured answers, and citations."""
 
-from typing import List, Optional
+from typing import Any, Dict, List, Literal, Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -35,6 +36,10 @@ class QueryMetadata(BaseModel):
     total_latency_ms: float = Field(..., description="Total end-to-end execution latency in ms")
     input_tokens: Optional[int] = Field(default=None, description="Number of prompt/input tokens if reported by provider")
     output_tokens: Optional[int] = Field(default=None, description="Number of completion tokens if reported by provider")
+    confidence_score: Optional[float] = Field(default=None, description="Retrieval-derived calibrated confidence score [0.0 - 1.0]")
+    abstained: bool = Field(default=False, description="Whether the pipeline abstained from generating an answer")
+    retrieval_mode: Optional[str] = Field(default="vector", description="Retrieval mechanism: 'vector', 'graph', or 'hybrid'")
+    graph_subgraph: Optional[Dict[str, Any]] = Field(default=None, description="Traversed knowledge graph nodes and relational path if graph/hybrid mode")
 
 
 class ChatRequest(BaseModel):
@@ -53,6 +58,10 @@ class ChatRequest(BaseModel):
     answer_mode: str = Field(
         default="exam",
         description="Answer generation format mode. Defaults to 'exam'"
+    )
+    retrieval_mode: Literal["vector", "graph", "hybrid"] = Field(
+        default="vector",
+        description="Retrieval strategy: 'vector' (Qdrant), 'graph' (NetworkX), or 'hybrid' (Reciprocal Rank Fusion)"
     )
 
 

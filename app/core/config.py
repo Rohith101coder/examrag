@@ -2,6 +2,7 @@
 
 from functools import lru_cache
 from typing import Any, List, Optional, Union
+
 from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -38,6 +39,7 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = Field(default=100, description="Chunk overlap in characters")
     RETRIEVAL_TOP_K: int = Field(default=3, description="Default top-k chunks to retrieve")
     RELEVANCE_THRESHOLD: Optional[float] = Field(default=None, description="Optional minimum similarity score threshold")
+    ABSTAIN_THRESHOLD: float = Field(default=0.65, description="Cosine similarity threshold below which query triggers abstention")
     MAX_UPLOAD_SIZE_MB: int = Field(default=20, description="Max allowed PDF upload size in megabytes")
     EMBEDDING_BATCH_SIZE: int = Field(default=32, description="Batch size for embedding generation")
 
