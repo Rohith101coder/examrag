@@ -4,9 +4,7 @@ import argparse
 import json
 import logging
 from pathlib import Path
-import sys
-import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from app.api.schemas.chat import ChatRequest, ExamAnswer, SourceChunk
 from app.core.config import get_settings
