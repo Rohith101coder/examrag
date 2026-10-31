@@ -2,12 +2,13 @@
 
 import json
 import logging
-from pathlib import Path
 import re
 import time
+from pathlib import Path
 from typing import List, Optional, Tuple
+
 import httpx
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 
 from app.api.schemas.chat import ExamAnswer, SourceChunk

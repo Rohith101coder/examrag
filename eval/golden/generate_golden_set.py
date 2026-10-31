@@ -1,9 +1,10 @@
 """Script to generate the standardized 65-item golden evaluation dataset."""
 
-import json
 from pathlib import Path
-from pydantic import BaseModel, Field
 from typing import List, Literal
+
+from pydantic import BaseModel, Field
+
 
 class GoldenItem(BaseModel):
     id: str = Field(..., description="Unique golden sample identifier")

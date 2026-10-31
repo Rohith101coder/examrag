@@ -1,11 +1,10 @@
 """Tests for health and readiness probe endpoints."""
 
 from unittest.mock import MagicMock
+
 from fastapi.testclient import TestClient
 
-from app.api.dependencies import get_settings, get_vector_store
 from app.core.config import Settings
-from app.infrastructure.vector_store import QdrantVectorStore
 
 
 def test_liveness_endpoint_success(client: TestClient) -> None:

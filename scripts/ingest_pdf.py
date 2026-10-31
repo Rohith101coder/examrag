@@ -2,7 +2,6 @@
 
 import argparse
 import sys
-import time
 from pathlib import Path
 
 from app.core.config import get_settings
@@ -32,7 +31,7 @@ def main() -> None:
     if args.collection:
         settings.QDRANT_COLLECTION_NAME = args.collection
 
-    logger = setup_logging(settings.LOG_LEVEL)
+    setup_logging(settings.LOG_LEVEL)
 
     file_path = Path(args.pdf_path).resolve()
     if not file_path.exists():

@@ -1,6 +1,7 @@
 """Tests for chat querying, RAG synthesis, citations, and error resilience."""
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
+
 from fastapi.testclient import TestClient
 
 from app.api.schemas.chat import ChatResponse, ExamAnswer, QueryMetadata, SourceChunk

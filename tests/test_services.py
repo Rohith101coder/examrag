@@ -1,17 +1,16 @@
 """Tests for internal domain services: ingestion, vector store, retrieval, and evaluation metrics."""
 
 from unittest.mock import MagicMock, patch
+
 import pytest
 from qdrant_client.http import models
 
-from app.api.schemas.chat import ChatRequest, ExamAnswer, SourceChunk
+from app.api.schemas.chat import ChatRequest, ExamAnswer
 from app.core.config import Settings
 from app.core.exceptions import (
     CollectionDimensionMismatchError,
     DocumentParsingError,
-    InvalidPDFError,
 )
-from app.infrastructure.embeddings import EmbeddingService
 from app.infrastructure.vector_store import QdrantVectorStore
 from app.services.ingestion_service import IngestionService
 from app.services.llm_service import LLMService

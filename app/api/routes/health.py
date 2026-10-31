@@ -1,6 +1,7 @@
 """Health and readiness probe endpoints."""
 
 import logging
+
 from fastapi import APIRouter, Depends, Response, status
 
 from app.api.dependencies import get_vector_store

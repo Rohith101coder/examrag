@@ -1,6 +1,7 @@
 """Schemas for document management, ingestion, and listings."""
 
-from typing import List, Optional
+from typing import List
+
 from pydantic import BaseModel, Field
 
 

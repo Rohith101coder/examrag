@@ -1,7 +1,7 @@
 """Document upload, ingestion, listing, and deletion endpoints."""
 
 import logging
-from typing import Optional
+
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 
 from app.api.dependencies import get_ingestion_service, get_vector_store, verify_ingestion_api_key
@@ -14,7 +14,6 @@ from app.api.schemas.document import (
 )
 from app.core.config import Settings, get_settings
 from app.core.exceptions import (
-    DocumentNotFoundError,
     DocumentParsingError,
     InvalidPDFError,
     OversizedFileError,

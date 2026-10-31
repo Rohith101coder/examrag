@@ -2,27 +2,21 @@
 
 import io
 from typing import Generator
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
+
+import pypdf
 import pytest
 from fastapi.testclient import TestClient
-import pypdf
 
 from app.api.dependencies import (
     get_embedding_service,
-    get_ingestion_service,
-    get_llm_service,
-    get_rag_service,
-    get_retrieval_service,
     get_vector_store,
 )
 from app.core.config import Settings, get_settings
 from app.infrastructure.embeddings import EmbeddingService
 from app.infrastructure.vector_store import QdrantVectorStore
 from app.main import create_application
-from app.services.ingestion_service import IngestionService
 from app.services.llm_service import LLMService
-from app.services.rag_service import RAGService
-from app.services.retrieval_service import RetrievalService
 
 
 @pytest.fixture

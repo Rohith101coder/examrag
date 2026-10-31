@@ -10,15 +10,14 @@ import argparse
 import json
 import logging
 import math
-from pathlib import Path
 import time
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from app.core.config import Settings, get_settings
 from app.infrastructure.embeddings import EmbeddingService
 from app.infrastructure.vector_store import QdrantVectorStore
 from app.services.ingestion_service import IngestionService
-from app.services.retrieval_service import RetrievalService
 
 logger = logging.getLogger(__name__)
 

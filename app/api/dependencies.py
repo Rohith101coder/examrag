@@ -3,10 +3,10 @@
 import logging
 import secrets
 from typing import Optional
+
 from fastapi import Depends, Header, HTTPException, status
 
 from app.core.config import Settings, get_settings
-from app.core.exceptions import AuthenticationError
 from app.infrastructure.embeddings import EmbeddingService
 from app.infrastructure.vector_store import QdrantVectorStore
 from app.services.ingestion_service import IngestionService

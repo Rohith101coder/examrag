@@ -2,6 +2,7 @@
 
 import logging
 from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.api.dependencies import get_rag_service, verify_chat_access

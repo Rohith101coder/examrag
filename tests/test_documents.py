@@ -1,12 +1,11 @@
 """Tests for document upload, ingestion, listing, and deletion endpoints."""
 
 from unittest.mock import MagicMock, patch
+
 from fastapi.testclient import TestClient
 
-from app.api.dependencies import get_ingestion_service, get_settings, get_vector_store
 from app.api.schemas.document import IngestionSummary
 from app.core.config import Settings
-from app.core.exceptions import DocumentParsingError, InvalidPDFError, OversizedFileError
 from app.services.ingestion_service import IngestionService
 
 
