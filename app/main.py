@@ -1,14 +1,16 @@
 """Main FastAPI application entry point with lifespan, CORS, middleware, and routes."""
 
 from contextlib import asynccontextmanager
-import logging
-from typing import AsyncGenerator
-from fastapi import FastAPI, Request, status
+from typing import AsyncGenerator, Literal
+
+from fastapi import Depends, FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app.api.dependencies import get_rag_service
 from app.api.routes import chat, documents, health
+from app.api.schemas.chat import ChatRequest, ChatResponse
 from app.api.schemas.common import ErrorResponse
 from app.core.config import get_settings
 from app.core.exceptions import (
@@ -26,6 +28,7 @@ from app.core.exceptions import (
     VectorStoreError,
 )
 from app.core.logging import setup_logging
+from app.services.rag_service import RAGService
 
 settings = get_settings()
 logger = setup_logging(settings.LOG_LEVEL)
@@ -173,6 +176,22 @@ def create_application() -> FastAPI:
             "docs": "/docs",
             "api_v1": settings.API_V1_PREFIX
         }
+
+    @app.get(
+        "/ask",
+        response_model=ChatResponse,
+        tags=["Chat"],
+        summary="Ask question with vector, graph, or hybrid retrieval",
+        description="Public endpoint supporting mode=vector|graph|hybrid for multi-hop graph-augmented answer generation."
+    )
+    def ask(
+        query: str,
+        mode: Literal["vector", "graph", "hybrid"] = "hybrid",
+        top_k: int = 3,
+        rag_service: RAGService = Depends(get_rag_service)
+    ) -> ChatResponse:
+        request = ChatRequest(question=query, top_k=top_k, retrieval_mode=mode)
+        return rag_service.answer_query(request)
 
     return app
 

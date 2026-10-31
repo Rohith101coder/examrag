@@ -1,0 +1,842 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "name": "CPU Scheduling",
+      "entity_type": "Topic",
+      "description": "Allocation of CPU cores among ready processes",
+      "aliases": [
+        "processor scheduling"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "cpu_scheduling"
+    },
+    {
+      "name": "Round Robin",
+      "entity_type": "Concept",
+      "description": "Preemptive scheduling algorithm driven by fixed time quantum slices",
+      "aliases": [
+        "RR",
+        "Round-Robin"
+      ],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "round_robin"
+    },
+    {
+      "name": "Time Quantum",
+      "entity_type": "Concept",
+      "description": "Fixed temporal duration allocated to a process in Round Robin",
+      "aliases": [
+        "time slice"
+      ],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "time_quantum"
+    },
+    {
+      "name": "First-Come First-Served",
+      "entity_type": "Concept",
+      "description": "Non-preemptive scheduling executing processes in arrival order",
+      "aliases": [
+        "FCFS"
+      ],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "fcfs"
+    },
+    {
+      "name": "Convoy Effect",
+      "entity_type": "Definition",
+      "description": "Performance degradation where I/O bound processes queue behind CPU intensive job in FCFS",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "convoy_effect"
+    },
+    {
+      "name": "Shortest Job First",
+      "entity_type": "Concept",
+      "description": "Optimal average waiting time scheduling associating each process with next burst length",
+      "aliases": [
+        "SJF"
+      ],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "sjf"
+    },
+    {
+      "name": "Shortest Remaining Time First",
+      "entity_type": "Concept",
+      "description": "Preemptive variant of SJF scheduling",
+      "aliases": [
+        "SRTF"
+      ],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "srtf"
+    },
+    {
+      "name": "Starvation",
+      "entity_type": "Definition",
+      "description": "Indefinite blocking where low priority or long jobs never acquire CPU",
+      "aliases": [
+        "indefinite blocking"
+      ],
+      "page_numbers": [
+        2,
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "starvation"
+    },
+    {
+      "name": "Aging",
+      "entity_type": "Concept",
+      "description": "Technique gradually increasing priority of processes waiting in system for prolonged duration",
+      "aliases": [],
+      "page_numbers": [
+        2,
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "aging"
+    },
+    {
+      "name": "Multilevel Feedback Queue",
+      "entity_type": "Topic",
+      "description": "Adaptive scheduling separating processes into queues with varying priorities and time slices",
+      "aliases": [
+        "MLFQ"
+      ],
+      "page_numbers": [
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "mlfq"
+    },
+    {
+      "name": "Turnaround Time",
+      "entity_type": "Formula",
+      "description": "Interval from time of process submission to time of completion",
+      "aliases": [
+        "TAT"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "turnaround_time"
+    },
+    {
+      "name": "Waiting Time",
+      "entity_type": "Formula",
+      "description": "Sum of periods spent waiting in the ready queue",
+      "aliases": [
+        "WT"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "waiting_time"
+    },
+    {
+      "name": "Response Time",
+      "entity_type": "Formula",
+      "description": "Time from submission to the first response produced",
+      "aliases": [
+        "RT"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "response_time"
+    },
+    {
+      "name": "Memory Management",
+      "entity_type": "Chapter",
+      "description": "Hardware and OS schemes to allocate, protect, and relocate main memory",
+      "aliases": [],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "memory_management"
+    },
+    {
+      "name": "Logical Address",
+      "entity_type": "Definition",
+      "description": "Address generated by CPU hardware; also termed virtual address",
+      "aliases": [
+        "virtual address"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "logical_address"
+    },
+    {
+      "name": "Physical Address",
+      "entity_type": "Definition",
+      "description": "Address loaded into memory address register of memory unit",
+      "aliases": [],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "physical_address"
+    },
+    {
+      "name": "Memory Management Unit",
+      "entity_type": "Concept",
+      "description": "Hardware device that maps virtual to physical addresses at runtime",
+      "aliases": [
+        "MMU"
+      ],
+      "page_numbers": [
+        1,
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "mmu"
+    },
+    {
+      "name": "Dynamic Relocation",
+      "entity_type": "Concept",
+      "description": "Hardware mapping using relocation and limit registers at memory access time",
+      "aliases": [],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "dynamic_relocation"
+    },
+    {
+      "name": "External Fragmentation",
+      "entity_type": "Definition",
+      "description": "Total free memory exceeds request but storage is non-contiguous",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "external_fragmentation"
+    },
+    {
+      "name": "Internal Fragmentation",
+      "entity_type": "Definition",
+      "description": "Unused memory space within an allocated partition/page frame",
+      "aliases": [],
+      "page_numbers": [
+        2,
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "internal_fragmentation"
+    },
+    {
+      "name": "Compaction",
+      "entity_type": "Concept",
+      "description": "Shuffling memory contents to place all free memory together in one large block",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "compaction"
+    },
+    {
+      "name": "Paging",
+      "entity_type": "Topic",
+      "description": "Non-contiguous memory allocation dividing physical memory into fixed frames and logical memory into pages",
+      "aliases": [],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "paging"
+    },
+    {
+      "name": "Page Table",
+      "entity_type": "Concept",
+      "description": "Data structure mapping process virtual page numbers to physical frame numbers",
+      "aliases": [],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "page_table"
+    },
+    {
+      "name": "Translation Lookaside Buffer",
+      "entity_type": "Concept",
+      "description": "Fast associative hardware cache inside MMU storing recent page table translations",
+      "aliases": [
+        "TLB"
+      ],
+      "page_numbers": [
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "tlb"
+    },
+    {
+      "name": "Effective Memory Access Time",
+      "entity_type": "Formula",
+      "description": "EMAT = Hit_Ratio * (TLB + Mem) + (1 - Hit_Ratio) * (TLB + 2*Mem)",
+      "aliases": [
+        "EMAT"
+      ],
+      "page_numbers": [
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "emat"
+    },
+    {
+      "name": "Inverted Page Table",
+      "entity_type": "Concept",
+      "description": "Page table indexed by physical frame numbers rather than virtual page numbers",
+      "aliases": [],
+      "page_numbers": [
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "inverted_page_table"
+    },
+    {
+      "name": "Deadlock",
+      "entity_type": "Topic",
+      "description": "State where every process in a set is waiting for an event caused only by another process in set",
+      "aliases": [],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "deadlock"
+    },
+    {
+      "name": "Race Condition",
+      "entity_type": "Definition",
+      "description": "Situation where several processes access and manipulate shared data concurrently and output depends on execution order",
+      "aliases": [],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "race_condition"
+    },
+    {
+      "name": "Critical Section",
+      "entity_type": "Concept",
+      "description": "Code segment accessing shared variables that must execute mutually exclusively",
+      "aliases": [],
+      "page_numbers": [
+        1
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "critical_section"
+    },
+    {
+      "name": "Semaphore",
+      "entity_type": "Concept",
+      "description": "Synchronization tool providing wait() and signal() atomic operations",
+      "aliases": [],
+      "page_numbers": [
+        1,
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "semaphore"
+    },
+    {
+      "name": "Coffman Conditions",
+      "entity_type": "Definition",
+      "description": "Four simultaneous conditions necessary and sufficient for deadlock: mutual exclusion, hold & wait, no preemption, circular wait",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "coffman_conditions"
+    },
+    {
+      "name": "Mutual Exclusion",
+      "entity_type": "Definition",
+      "description": "At least one resource must be held in a non-shareable mode",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "mutual_exclusion"
+    },
+    {
+      "name": "Hold and Wait",
+      "entity_type": "Definition",
+      "description": "Process holding allocated resource and requesting additional busy resources",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "hold_and_wait"
+    },
+    {
+      "name": "No Preemption",
+      "entity_type": "Definition",
+      "description": "Resources cannot be forcibly preempted; released voluntarily only",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "no_preemption"
+    },
+    {
+      "name": "Circular Wait",
+      "entity_type": "Definition",
+      "description": "Closed loop of processes where each waits for a resource held by the next",
+      "aliases": [],
+      "page_numbers": [
+        2
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "circular_wait"
+    },
+    {
+      "name": "Resource Ordering",
+      "entity_type": "Concept",
+      "description": "Deadlock prevention protocol imposing total linear ordering on resource types",
+      "aliases": [],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "resource_ordering"
+    },
+    {
+      "name": "Banker's Algorithm",
+      "entity_type": "Concept",
+      "description": "Deadlock avoidance algorithm testing resource allocations for safety states",
+      "aliases": [],
+      "page_numbers": [
+        3,
+        4
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "bankers_algorithm"
+    },
+    {
+      "name": "Safe State",
+      "entity_type": "Definition",
+      "description": "State where there exists a safe execution sequence of processes completing without deadlock",
+      "aliases": [],
+      "page_numbers": [
+        3
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "safe_state"
+    },
+    {
+      "name": "Dining Philosophers Problem",
+      "entity_type": "Concept",
+      "description": "Classic synchronization benchmark modeling resource contention among concurrency threads",
+      "aliases": [],
+      "page_numbers": [
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "dining_philosophers"
+    },
+    {
+      "name": "Asymmetric Solution",
+      "entity_type": "Concept",
+      "description": "Resolution to dining philosophers where odd numbered philosophers pick left fork first",
+      "aliases": [],
+      "page_numbers": [
+        5
+      ],
+      "source_documents": [],
+      "chunk_ids": [],
+      "id": "asymmetric_solution"
+    }
+  ],
+  "edges": [
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "round_robin",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "round_robin",
+      "target": "convoy_effect"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 1.0,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "time_quantum",
+      "target": "round_robin"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "fcfs",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "DEFINED_IN",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "convoy_effect",
+      "target": "fcfs"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "sjf",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.9,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "sjf",
+      "target": "starvation"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "srtf",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "aging",
+      "target": "starvation"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 0.9,
+      "page_number": 4,
+      "evidence": "Course curriculum relation",
+      "source": "aging",
+      "target": "mlfq"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 4,
+      "evidence": "Course curriculum relation",
+      "source": "mlfq",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "DEFINED_IN",
+      "weight": 0.85,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "turnaround_time",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "DEFINED_IN",
+      "weight": 0.85,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "waiting_time",
+      "target": "cpu_scheduling"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 0.95,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "mmu",
+      "target": "dynamic_relocation"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 0.9,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "dynamic_relocation",
+      "target": "memory_management"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 0.95,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "dynamic_relocation",
+      "target": "compaction"
+    },
+    {
+      "relation": "DEFINED_IN",
+      "weight": 0.9,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "external_fragmentation",
+      "target": "memory_management"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "compaction",
+      "target": "external_fragmentation"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "paging",
+      "target": "memory_management"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.9,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "paging",
+      "target": "internal_fragmentation"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "page_table",
+      "target": "paging"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 1.0,
+      "page_number": 4,
+      "evidence": "Course curriculum relation",
+      "source": "page_table",
+      "target": "emat"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 4,
+      "evidence": "Course curriculum relation",
+      "source": "tlb",
+      "target": "mmu"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 1.0,
+      "page_number": 4,
+      "evidence": "Course curriculum relation",
+      "source": "tlb",
+      "target": "emat"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.85,
+      "page_number": 5,
+      "evidence": "Course curriculum relation",
+      "source": "inverted_page_table",
+      "target": "page_table"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "critical_section",
+      "target": "race_condition"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 0.95,
+      "page_number": 1,
+      "evidence": "Course curriculum relation",
+      "source": "semaphore",
+      "target": "critical_section"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 0.95,
+      "page_number": 5,
+      "evidence": "Course curriculum relation",
+      "source": "semaphore",
+      "target": "dining_philosophers"
+    },
+    {
+      "relation": "DEFINED_IN",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "coffman_conditions",
+      "target": "deadlock"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "mutual_exclusion",
+      "target": "coffman_conditions"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "hold_and_wait",
+      "target": "coffman_conditions"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "no_preemption",
+      "target": "coffman_conditions"
+    },
+    {
+      "relation": "PART_OF",
+      "weight": 1.0,
+      "page_number": 2,
+      "evidence": "Course curriculum relation",
+      "source": "circular_wait",
+      "target": "coffman_conditions"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "resource_ordering",
+      "target": "circular_wait"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "bankers_algorithm",
+      "target": "deadlock"
+    },
+    {
+      "relation": "PREREQUISITE_OF",
+      "weight": 1.0,
+      "page_number": 3,
+      "evidence": "Course curriculum relation",
+      "source": "safe_state",
+      "target": "bankers_algorithm"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 5,
+      "evidence": "Course curriculum relation",
+      "source": "dining_philosophers",
+      "target": "deadlock"
+    },
+    {
+      "relation": "RELATED_TO",
+      "weight": 0.95,
+      "page_number": 5,
+      "evidence": "Course curriculum relation",
+      "source": "asymmetric_solution",
+      "target": "dining_philosophers"
+    }
+  ]
+}

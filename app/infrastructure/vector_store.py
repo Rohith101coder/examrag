@@ -134,11 +134,11 @@ class QdrantVectorStore:
         query_vector: List[float],
         top_k: int = 3,
         document_ids: Optional[List[str]] = None,
-        score_threshold: Optional[float] = None
+        score_threshold: Optional[float] = None,
+        collection_name: Optional[str] = None
     ) -> List[models.ScoredPoint]:
         """Perform cosine similarity search on the collection with optional document filtering."""
-        client = self.get_client()
-        collection_name = self.settings.QDRANT_COLLECTION_NAME
+        target_collection = collection_name or self.settings.QDRANT_COLLECTION_NAME
 
         query_filter: Optional[models.Filter] = None
         if document_ids:
@@ -157,7 +157,7 @@ class QdrantVectorStore:
                 # Use query_points or search depending on client version
                 if hasattr(client, "query_points"):
                     response = client.query_points(
-                        collection_name=collection_name,
+                        collection_name=target_collection,
                         query=query_vector,
                         query_filter=query_filter,
                         limit=top_k,
@@ -167,7 +167,7 @@ class QdrantVectorStore:
                     return response.points
                 else:
                     return client.search(
-                        collection_name=collection_name,
+                        collection_name=target_collection,
                         query_vector=query_vector,
                         query_filter=query_filter,
                         limit=top_k,

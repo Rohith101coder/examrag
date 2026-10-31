@@ -1,0 +1,86 @@
+{
+  "graph_topology": {
+    "num_nodes": 40,
+    "num_edges": 38,
+    "density": 0.0244,
+    "average_degree": 1.9,
+    "is_directed": true
+  },
+  "overall_retrieval": {
+    "vector": {
+      "recall_at_1": 0.8868,
+      "recall_at_3": 0.9811,
+      "recall_at_5": 0.9906,
+      "precision_at_3": 0.8113,
+      "hit_at_1": 0.9623,
+      "hit_at_3": 1.0,
+      "mrr": 0.9811,
+      "ndcg_at_3": 1.6824,
+      "latency_ms": 365.26
+    },
+    "graph": {
+      "recall_at_1": 0.8491,
+      "recall_at_3": 0.9623,
+      "recall_at_5": 0.9906,
+      "precision_at_3": 0.7988,
+      "hit_at_1": 0.9245,
+      "hit_at_3": 0.9811,
+      "mrr": 0.9575,
+      "ndcg_at_3": 1.6422,
+      "latency_ms": 336.17
+    },
+    "hybrid": {
+      "recall_at_1": 0.6792,
+      "recall_at_3": 0.9811,
+      "recall_at_5": 1.0,
+      "precision_at_3": 0.3899,
+      "hit_at_1": 0.7547,
+      "hit_at_3": 1.0,
+      "mrr": 0.8711,
+      "ndcg_at_3": 0.9079,
+      "latency_ms": 696.18
+    }
+  },
+  "multihop_retrieval": {
+    "vector": {
+      "recall_at_1": 0.7333,
+      "recall_at_3": 0.9333,
+      "recall_at_5": 0.9667,
+      "precision_at_3": 0.9333,
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_3": 1.5825,
+      "latency_ms": 398.35
+    },
+    "graph": {
+      "recall_at_1": 0.7333,
+      "recall_at_3": 0.9333,
+      "recall_at_5": 0.9667,
+      "precision_at_3": 0.9333,
+      "hit_at_1": 1.0,
+      "hit_at_3": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_3": 1.5825,
+      "latency_ms": 436.37
+    },
+    "hybrid": {
+      "recall_at_1": 0.6,
+      "recall_at_3": 0.9333,
+      "recall_at_5": 1.0,
+      "precision_at_3": 0.5333,
+      "hit_at_1": 0.8667,
+      "hit_at_3": 1.0,
+      "mrr": 0.9333,
+      "ndcg_at_3": 0.9627,
+      "latency_ms": 856.9
+    }
+  },
+  "triple_precision": {
+    "status": "evaluated",
+    "total_triples_checked": 30,
+    "valid_triples": 30,
+    "triple_precision": 1.0
+  },
+  "visualization_image": "D:\\RAG Model for CAI\\eval\\reports\\graph_visualization.png"
+}

@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d10" for="edge" attr.name="evidence" attr.type="string"/>
+<key id="d9" for="edge" attr.name="page_number" attr.type="long"/>
+<key id="d8" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d7" for="edge" attr.name="relation" attr.type="string"/>
+<key id="d6" for="node" attr.name="chunk_ids" attr.type="string"/>
+<key id="d5" for="node" attr.name="source_documents" attr.type="string"/>
+<key id="d4" for="node" attr.name="page_numbers" attr.type="string"/>
+<key id="d3" for="node" attr.name="aliases" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="name" attr.type="string"/>
+<graph edgedefault="directed"><node id="cpu_scheduling">
+  <data key="d0">CPU Scheduling</data>
+  <data key="d1">Topic</data>
+  <data key="d2">Allocation of CPU cores among ready processes</data>
+  <data key="d3">processor scheduling</data>
+  <data key="d4">1,2,3,4,5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="round_robin">
+  <data key="d0">Round Robin</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Preemptive scheduling algorithm driven by fixed time quantum slices</data>
+  <data key="d3">RR,Round-Robin</data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="time_quantum">
+  <data key="d0">Time Quantum</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Fixed temporal duration allocated to a process in Round Robin</data>
+  <data key="d3">time slice</data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="fcfs">
+  <data key="d0">First-Come First-Served</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Non-preemptive scheduling executing processes in arrival order</data>
+  <data key="d3">FCFS</data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="convoy_effect">
+  <data key="d0">Convoy Effect</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Performance degradation where I/O bound processes queue behind CPU intensive job in FCFS</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="sjf">
+  <data key="d0">Shortest Job First</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Optimal average waiting time scheduling associating each process with next burst length</data>
+  <data key="d3">SJF</data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="srtf">
+  <data key="d0">Shortest Remaining Time First</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Preemptive variant of SJF scheduling</data>
+  <data key="d3">SRTF</data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="starvation">
+  <data key="d0">Starvation</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Indefinite blocking where low priority or long jobs never acquire CPU</data>
+  <data key="d3">indefinite blocking</data>
+  <data key="d4">2,4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="aging">
+  <data key="d0">Aging</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Technique gradually increasing priority of processes waiting in system for prolonged duration</data>
+  <data key="d3"></data>
+  <data key="d4">2,4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="mlfq">
+  <data key="d0">Multilevel Feedback Queue</data>
+  <data key="d1">Topic</data>
+  <data key="d2">Adaptive scheduling separating processes into queues with varying priorities and time slices</data>
+  <data key="d3">MLFQ</data>
+  <data key="d4">4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="turnaround_time">
+  <data key="d0">Turnaround Time</data>
+  <data key="d1">Formula</data>
+  <data key="d2">Interval from time of process submission to time of completion</data>
+  <data key="d3">TAT</data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="waiting_time">
+  <data key="d0">Waiting Time</data>
+  <data key="d1">Formula</data>
+  <data key="d2">Sum of periods spent waiting in the ready queue</data>
+  <data key="d3">WT</data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="response_time">
+  <data key="d0">Response Time</data>
+  <data key="d1">Formula</data>
+  <data key="d2">Time from submission to the first response produced</data>
+  <data key="d3">RT</data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="memory_management">
+  <data key="d0">Memory Management</data>
+  <data key="d1">Chapter</data>
+  <data key="d2">Hardware and OS schemes to allocate, protect, and relocate main memory</data>
+  <data key="d3"></data>
+  <data key="d4">1,2,3,4,5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="logical_address">
+  <data key="d0">Logical Address</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Address generated by CPU hardware; also termed virtual address</data>
+  <data key="d3">virtual address</data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="physical_address">
+  <data key="d0">Physical Address</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Address loaded into memory address register of memory unit</data>
+  <data key="d3"></data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="mmu">
+  <data key="d0">Memory Management Unit</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Hardware device that maps virtual to physical addresses at runtime</data>
+  <data key="d3">MMU</data>
+  <data key="d4">1,4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="dynamic_relocation">
+  <data key="d0">Dynamic Relocation</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Hardware mapping using relocation and limit registers at memory access time</data>
+  <data key="d3"></data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="external_fragmentation">
+  <data key="d0">External Fragmentation</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Total free memory exceeds request but storage is non-contiguous</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="internal_fragmentation">
+  <data key="d0">Internal Fragmentation</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Unused memory space within an allocated partition/page frame</data>
+  <data key="d3"></data>
+  <data key="d4">2,3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="compaction">
+  <data key="d0">Compaction</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Shuffling memory contents to place all free memory together in one large block</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="paging">
+  <data key="d0">Paging</data>
+  <data key="d1">Topic</data>
+  <data key="d2">Non-contiguous memory allocation dividing physical memory into fixed frames and logical memory into pages</data>
+  <data key="d3"></data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="page_table">
+  <data key="d0">Page Table</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Data structure mapping process virtual page numbers to physical frame numbers</data>
+  <data key="d3"></data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="tlb">
+  <data key="d0">Translation Lookaside Buffer</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Fast associative hardware cache inside MMU storing recent page table translations</data>
+  <data key="d3">TLB</data>
+  <data key="d4">4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="emat">
+  <data key="d0">Effective Memory Access Time</data>
+  <data key="d1">Formula</data>
+  <data key="d2">EMAT = Hit_Ratio * (TLB + Mem) + (1 - Hit_Ratio) * (TLB + 2*Mem)</data>
+  <data key="d3">EMAT</data>
+  <data key="d4">4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="inverted_page_table">
+  <data key="d0">Inverted Page Table</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Page table indexed by physical frame numbers rather than virtual page numbers</data>
+  <data key="d3"></data>
+  <data key="d4">5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="deadlock">
+  <data key="d0">Deadlock</data>
+  <data key="d1">Topic</data>
+  <data key="d2">State where every process in a set is waiting for an event caused only by another process in set</data>
+  <data key="d3"></data>
+  <data key="d4">1,2,3,4,5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="race_condition">
+  <data key="d0">Race Condition</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Situation where several processes access and manipulate shared data concurrently and output depends on execution order</data>
+  <data key="d3"></data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="critical_section">
+  <data key="d0">Critical Section</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Code segment accessing shared variables that must execute mutually exclusively</data>
+  <data key="d3"></data>
+  <data key="d4">1</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="semaphore">
+  <data key="d0">Semaphore</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Synchronization tool providing wait() and signal() atomic operations</data>
+  <data key="d3"></data>
+  <data key="d4">1,5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="coffman_conditions">
+  <data key="d0">Coffman Conditions</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Four simultaneous conditions necessary and sufficient for deadlock: mutual exclusion, hold &amp; wait, no preemption, circular wait</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="mutual_exclusion">
+  <data key="d0">Mutual Exclusion</data>
+  <data key="d1">Definition</data>
+  <data key="d2">At least one resource must be held in a non-shareable mode</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="hold_and_wait">
+  <data key="d0">Hold and Wait</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Process holding allocated resource and requesting additional busy resources</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="no_preemption">
+  <data key="d0">No Preemption</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Resources cannot be forcibly preempted; released voluntarily only</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="circular_wait">
+  <data key="d0">Circular Wait</data>
+  <data key="d1">Definition</data>
+  <data key="d2">Closed loop of processes where each waits for a resource held by the next</data>
+  <data key="d3"></data>
+  <data key="d4">2</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="resource_ordering">
+  <data key="d0">Resource Ordering</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Deadlock prevention protocol imposing total linear ordering on resource types</data>
+  <data key="d3"></data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="bankers_algorithm">
+  <data key="d0">Banker's Algorithm</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Deadlock avoidance algorithm testing resource allocations for safety states</data>
+  <data key="d3"></data>
+  <data key="d4">3,4</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="safe_state">
+  <data key="d0">Safe State</data>
+  <data key="d1">Definition</data>
+  <data key="d2">State where there exists a safe execution sequence of processes completing without deadlock</data>
+  <data key="d3"></data>
+  <data key="d4">3</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="dining_philosophers">
+  <data key="d0">Dining Philosophers Problem</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Classic synchronization benchmark modeling resource contention among concurrency threads</data>
+  <data key="d3"></data>
+  <data key="d4">5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<node id="asymmetric_solution">
+  <data key="d0">Asymmetric Solution</data>
+  <data key="d1">Concept</data>
+  <data key="d2">Resolution to dining philosophers where odd numbered philosophers pick left fork first</data>
+  <data key="d3"></data>
+  <data key="d4">5</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+</node>
+<edge source="round_robin" target="cpu_scheduling">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="round_robin" target="convoy_effect">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="time_quantum" target="round_robin">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="fcfs" target="cpu_scheduling">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="convoy_effect" target="fcfs">
+  <data key="d7">DEFINED_IN</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="sjf" target="cpu_scheduling">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="sjf" target="starvation">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.9</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="srtf" target="cpu_scheduling">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="aging" target="starvation">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="aging" target="mlfq">
+  <data key="d7">PART_OF</data>
+  <data key="d8">0.9</data>
+  <data key="d9">4</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="mlfq" target="cpu_scheduling">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">4</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="turnaround_time" target="cpu_scheduling">
+  <data key="d7">DEFINED_IN</data>
+  <data key="d8">0.85</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="waiting_time" target="cpu_scheduling">
+  <data key="d7">DEFINED_IN</data>
+  <data key="d8">0.85</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="mmu" target="dynamic_relocation">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">0.95</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="dynamic_relocation" target="memory_management">
+  <data key="d7">PART_OF</data>
+  <data key="d8">0.9</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="dynamic_relocation" target="compaction">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">0.95</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="external_fragmentation" target="memory_management">
+  <data key="d7">DEFINED_IN</data>
+  <data key="d8">0.9</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="compaction" target="external_fragmentation">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="paging" target="memory_management">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="paging" target="internal_fragmentation">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.9</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="page_table" target="paging">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="page_table" target="emat">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">4</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="tlb" target="mmu">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">4</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="tlb" target="emat">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">4</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="inverted_page_table" target="page_table">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.85</data>
+  <data key="d9">5</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="critical_section" target="race_condition">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="semaphore" target="critical_section">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">0.95</data>
+  <data key="d9">1</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="semaphore" target="dining_philosophers">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">0.95</data>
+  <data key="d9">5</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="coffman_conditions" target="deadlock">
+  <data key="d7">DEFINED_IN</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="mutual_exclusion" target="coffman_conditions">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="hold_and_wait" target="coffman_conditions">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="no_preemption" target="coffman_conditions">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="circular_wait" target="coffman_conditions">
+  <data key="d7">PART_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">2</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="resource_ordering" target="circular_wait">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="bankers_algorithm" target="deadlock">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="safe_state" target="bankers_algorithm">
+  <data key="d7">PREREQUISITE_OF</data>
+  <data key="d8">1.0</data>
+  <data key="d9">3</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="dining_philosophers" target="deadlock">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">5</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+<edge source="asymmetric_solution" target="dining_philosophers">
+  <data key="d7">RELATED_TO</data>
+  <data key="d8">0.95</data>
+  <data key="d9">5</data>
+  <data key="d10">Course curriculum relation</data>
+</edge>
+</graph></graphml>
