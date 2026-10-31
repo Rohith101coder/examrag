@@ -38,4 +38,5 @@ tmp/
 # Large local PDF binaries and prototype files
 caiModel.pdf
 caiModel.py
+PROJECT_SUMMARY.txt
 
