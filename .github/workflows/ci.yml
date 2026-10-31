@@ -37,3 +37,4 @@ jobs:
           INGESTION_API_KEY: mock-ingestion-key-for-ci
         run: |
           pytest -v tests/
+

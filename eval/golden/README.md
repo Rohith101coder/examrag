@@ -54,3 +54,4 @@ The dataset contains **65 JSONL items** adhering to the following strict Pydanti
 1. **Synthetic Academic Curation**: The questions and reference answers were curated to match university examination standards (e.g., JNTU, GATE, ABET CS standards).
 2. **Corpus Boundaries**: The corpus is restricted to 15 pages across 3 modules. While ideal for controlled, reproducible evaluation, real enterprise deployments span thousands of pages.
 3. **Keyword Heuristics**: Token-level lexical checks (EM/F1) can underestimate semantically valid paraphrases; hence, we couple them with LLM-as-a-judge and human calibration checks.
+

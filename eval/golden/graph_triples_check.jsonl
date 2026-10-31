@@ -28,3 +28,4 @@
 {"triple_id": 28, "source": "Dining Philosophers Problem", "relation": "RELATED_TO", "target": "Deadlock", "page_number": 5, "human_valid": 1, "notes": "Classic concurrency synchronization benchmark demonstrating circular wait."}
 {"triple_id": 29, "source": "Semaphore", "relation": "PREREQUISITE_OF", "target": "Dining Philosophers Problem", "page_number": 5, "human_valid": 1, "notes": "Chopsticks are implemented as mutual exclusion semaphores."}
 {"triple_id": 30, "source": "Asymmetric Solution", "relation": "RELATED_TO", "target": "Dining Philosophers Problem", "page_number": 5, "human_valid": 1, "notes": "Odd philosophers picking left chopstick first breaks circular wait symmetry."}
+

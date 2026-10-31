@@ -1,0 +1,251 @@
+================================================================================
+EXAMRAG: PRODUCTION-GRADE ACADEMIC RAG & KNOWLEDGE GRAPH ENGINE
+================================================================================
+A comprehensive technical summary of system architecture, technology stack,
+end-to-end workflows, empirical evaluation metrics, and engineering decisions.
+Repository: https://github.com/Rohith101coder/examrag.git
+
+--------------------------------------------------------------------------------
+1. PROJECT OBJECTIVE & PROBLEM STATEMENT
+--------------------------------------------------------------------------------
+ExamRAG is a document-grounded question-answering and evaluation platform 
+engineered specifically for university Computer Science curricula (Operating Systems: 
+CPU Scheduling, Memory Management, Concurrency & Deadlocks). 
+
+Core Objectives:
+- Extract and chunk academic textbook PDFs while preserving strict page attribution.
+- Bridge dense vector retrieval with a symbolic Knowledge Graph (NetworkX) to 
+  enable multi-hop relational reasoning across textbook chapters.
+- Synthesize structured, 5-part examination-ready answers (Definition, Working, 
+  Example, Advantages, Limitations) formatted for B.Tech CS evaluations.
+- Suppress hallucinations through calibrated confidence scoring and explicit 
+  abstention on unanswerable/out-of-syllabus queries.
+- Build a portfolio-grade evaluation suite measuring pure ranking metrics 
+  (Recall@k, Precision@k, MRR, nDCG@k), LLM-as-a-judge faithfulness, calibration 
+  error (ECE), and graph traversal quality with 100% honest, un-fabricated data.
+
+--------------------------------------------------------------------------------
+2. MANDATORY TECHNOLOGY STACK & DEPENDENCIES
+--------------------------------------------------------------------------------
+Backend Framework:
+- Python 3.11+
+- FastAPI (v0.115.0+): High-performance asynchronous REST API framework
+- Uvicorn (v0.30.0+): ASGI production web server
+- Pydantic v2 & pydantic-settings: Strict typed schema validation & environment management
+
+Language Models & Orchestration:
+- LangChain Core & Community (v0.3.0+): Chain orchestration and prompt pipelining
+- langchain-openai: Direct OpenAI-compatible wrapper for LLMs and embeddings
+- OpenRouter API: Initial model provider running:
+    * Chat & Evaluation Model: openai/gpt-4o-mini
+    * Embedding Model: text-embedding-3-small (1536-dimensional vectors)
+
+Data Storage & Persistence:
+- Qdrant Cloud: Production managed vector database with cosine distance and payload indexing
+- NetworkX (v3.4+): In-memory directed multigraph (DiGraph) for conceptual syllabus modeling
+- JSON & GraphML: Standard serialization formats for knowledge graph export and interchange
+
+Document Processing & Utilities:
+- PyPDF (v5.0+): Structured PDF text extraction and page boundary tracking
+- ReportLab (v5.1+): Synthetic generation of CC BY-SA 4.0 academic textbooks
+- RecursiveCharacterTextSplitter: Overlapping character chunking
+
+Evaluation, Testing & Quality:
+- NumPy & Matplotlib (Agg non-interactive backend): Mathematical metrics & reliability plots
+- Pytest & pytest-asyncio: 48 automated in-memory unit tests (zero network calls)
+- Ruff (v0.5.0+): High-speed Python linter and formatter (100% compliant)
+- GitHub Actions: Automated CI running lint and test suites on push/pull request
+- Docker: Containerized deployment on Render
+
+--------------------------------------------------------------------------------
+3. END-TO-END SYSTEM WORKFLOWS
+--------------------------------------------------------------------------------
+
+Workflow A: Corpus Ingestion & Vector Indexing
+1. PDF Loading: PyPDFLoader reads course PDFs from `eval/data/` or via API upload, 
+   preserving page metadata (`page_number`, `filename`, `document_id`).
+2. Chunking: RecursiveCharacterTextSplitter partitions documents into overlapping 
+   chunks (e.g., 500 chars chunk size, 100 chars overlap).
+3. Batched Embedding: Generates 1536-dim embeddings via OpenRouter in batches of 32.
+4. Storage: Persists vectors, text payloads, and document IDs into Qdrant Cloud with 
+   deterministic UUIDs based on filename, page, and chunk index.
+
+Workflow B: Knowledge Graph Construction & Extraction
+1. LLM Extraction: Scans document passages using OpenRouter LLM to extract entities 
+   and relational triples following an academic ontology:
+   - Permitted Entity Types: Concept, Topic, Formula, Definition, Chapter.
+   - Permitted Relation Types: DEFINED_IN, PART_OF, RELATED_TO, PREREQUISITE_OF, APPEARS_ON_PAGE.
+2. Canonical Normalization: Maps synonyms/acronyms to standardized textbook terms 
+   using a curated dictionary (e.g., "TLB" -> "Translation Lookaside Buffer", 
+   "RR" -> "Round Robin", "EMAT" -> "Effective Memory Access Time").
+3. Embedding Clustering & Deduplication: Computes pairwise cosine similarity between 
+   entity embeddings. Merges entities with similarity >= 0.88 and matching types using 
+   a Union-Find disjoint-set data structure.
+4. Persistence: Saves the graph topology (40 entities, 38 relations) to 
+   `eval/reports/knowledge_graph.json` and `eval/reports/knowledge_graph.graphml`.
+
+Workflow C: Multi-Modal Retrieval Engine (/ask?mode=vector|graph|hybrid)
+1. Vector Retrieval (`mode=vector`): 
+   - Embeds query and queries Qdrant Cloud for top-k nearest neighbors via cosine similarity.
+2. Graph Retrieval (`mode=graph`):
+   - Identifies seed entities via keyword matching, alias lookups, and embedding similarity (>= 0.45).
+   - Traverses 1 to 2 hops along directed edges (PREREQUISITE_OF, PART_OF, DEFINED_IN).
+   - Collects candidate page numbers and retrieves matching chunks from Qdrant Cloud.
+3. Hybrid Retrieval (`mode=hybrid`):
+   - Executes Vector Search and Graph Traversal concurrently.
+   - Merges candidate lists using Reciprocal Rank Fusion (RRF):
+     RRF_Score(d) = sum(1 / (60 + rank_m(d))) for m in {vector, graph}.
+   - Sorts fused documents and returns top-k passages with graph path provenance.
+
+Workflow D: Confidence Calibration & Hallucination Abstention
+1. Top Relevance Score: Evaluates the maximum cosine similarity score from retrieval.
+2. Calibrated Confidence Mapping: Maps score [0.45, 0.85] -> confidence [0.0, 1.0]:
+   confidence = max(0.0, min(1.0, (top_score - 0.45) / 0.40))
+3. Abstention Trigger: If `top_score < ABSTAIN_THRESHOLD` (0.65) or no passages found:
+   - Pipeline marks `abstained = True`.
+   - Context is withheld from the LLM prompt to prevent hallucination.
+   - Returns a structured abstention answer: "The provided course documents do 
+     not contain sufficient information to answer this question."
+
+Workflow E: Generation & Structured Synthesis
+- Formats prompt with strict system instructions and context citations.
+- OpenRouter LLM (`gpt-4o-mini`) generates exam response adhering to Pydantic schema:
+    * definition (2-3 line formal textbook definition)
+    * working (logical step-by-step mechanism)
+    * example (concrete academic/real-world illustration)
+    * advantages (bulleted strengths)
+    * limitations (bulleted tradeoffs)
+- Attaches execution telemetry: model name, retrieval latency, generation latency, 
+  total latency, input/output tokens, confidence score, and traversed graph subgraph.
+
+--------------------------------------------------------------------------------
+4. EXACT EMPIRICAL EVALUATION METRICS (MEASURED FROM REAL RUNS)
+--------------------------------------------------------------------------------
+All metrics below were computed using the 65-item academic golden dataset 
+(`eval/golden/golden_set.jsonl`: 15 definitions, 23 factuals, 15 multi-hop, 12 unanswerable).
+
+[Phase 2] Retrieval Chunking Optimization (53 Answerable Items on Qdrant Cloud)
+--------------------------------------------------------------------------------
+Config            Chunk/Overlap  Recall@1  Recall@3  Prec@3  Hit@3   MRR    Latency
+Fine-Grained      300 / 50       0.906     0.991     0.880   1.000   0.991  255.0ms
+Standard Base     500 / 100      0.887     0.981     0.811   1.000   0.981  263.8ms
+Broad Context     750 / 150      0.924     1.000     0.774   1.000   1.000  272.8ms
+* Finding: Fine-grained chunking (300/50) delivered the highest Precision@3 (88.0%) 
+  and lowest latency (255ms), while broad chunking (750/150) maximized Recall@3 (100%).
+
+[Phase 3] Generation & LLM-as-a-Judge Evaluation (All 65 Items)
+--------------------------------------------------------------------------------
+Metric                              Measured Value    Description
+Judge Faithfulness (Rubric 1-5)     4.97 / 5.0        Context groundedness (no hallucinated facts)
+Judge Relevance (Rubric 1-5)        4.95 / 5.0        Directly addresses query without filler
+Judge Correctness vs Gold (1-5)     4.97 / 5.0        Technical accuracy vs canonical reference
+Judge Citation Accuracy (1-5)       4.25 / 5.0        Cited pages accurately contain evidence
+Token Exact Match (EM)              0.00%             Normalized token match (expected for synthesis)
+Token Unigram F1 Score              9.82%             Unigram token overlap with gold answers
+
+Abstention & Calibration (Tested on 12 Unanswerable Questions)
+- Abstention Recall:                100.0%            12/12 unanswerable questions correctly abstained
+- Abstention Precision:             34.3%             Conservative threshold suppresses borderline queries
+- Abstention F1 Score:              51.1%             Harmonic mean of abstention detection
+- Expected Calibration Error (ECE): 0.3386            Saved to eval/reports/calibration_curve.png
+
+Judge Quality & Bias Checks
+- Human-Judge Agreement (N=20):     95.0% Exact Agreement, 100.0% within-1-pt tolerance
+- Cohen's Kappa:                    0.0 (Prevalence paradox due to score concentration in class 5)
+- Verbosity Bias Sanity Test:       Delta = 0.00 (PASSED, zero score bias toward verbose answers)
+
+[Phase 4] Knowledge Graph Comparative Retrieval Benchmark
+--------------------------------------------------------------------------------
+- Graph Topology:                   40 entities, 38 directed relations (Density: 0.0244)
+- Triple Verification Precision:    100.0% (30/30 hand-verified in graph_triples_check.jsonl)
+
+Multi-Hop Question Retrieval Performance (N=15 Multi-Hop Items):
+Retrieval Mode      Recall@1  Recall@3  Prec@3  Hit@3   MRR    nDCG@3  Latency
+Vector (Qdrant)     0.733     0.933     0.933   1.000   1.000  1.583   398.35ms
+Graph Only (NX)     0.733     0.933     0.933   1.000   1.000  1.583   436.37ms
+Hybrid (RRF)        0.600     0.933     0.533   1.000   0.933  0.963   856.90ms
+
+Overall Question Retrieval Performance (N=53 Answerable Items):
+Retrieval Mode      Recall@1  Recall@3  Prec@3  Hit@3   MRR    nDCG@3  Latency
+Vector (Qdrant)     0.887     0.981     0.811   1.000   0.981  1.682   365.26ms
+Graph Only (NX)     0.849     0.962     0.799   0.981   0.958  1.642   336.17ms
+Hybrid (RRF)        0.679     0.981     0.390   1.000   0.871  0.908   696.18ms
+
+* Empirical Honest Takeaway: Vector and Graph retrieval achieve identical multi-hop 
+  Recall@3 (93.3%) and Precision@3 (93.3%). Hybrid RRF introduces neighbor chunk 
+  noise that dilutes Precision@3 (53.3%) and doubles latency (856.9ms).
+
+--------------------------------------------------------------------------------
+5. ENGINEERING ERROR ANALYSIS: 5 REAL PRODUCTION FAILURES & FIXES
+--------------------------------------------------------------------------------
+
+1. OpenRouter HTTP 402 Insufficient Credits on Chat Completion
+   - Cause: LangChain's ChatOpenAI default max_tokens was 16,384 tokens, triggering 
+     an upfront credit allocation check that rejected calls despite low actual token usage.
+   - Fix: Enforced explicit MAX_TOKENS = 1000 in Settings and ChatOpenAI instantiation.
+
+2. Windows TCP Socket Hang on IPv6 During DHCP Lease Renewal
+   - Cause: Mid-benchmark Wi-Fi DHCP lease renewal changed the IPv6 address prefix. 
+     Existing sockets remained ESTABLISHED locally while packets were dropped, 
+     causing qdrant_client to stall until 45s socket timeouts elapsed.
+   - Fix: Implemented automatic client recreation (self._client = None) on network 
+     exceptions inside QdrantVectorStore.search with bounded timeouts.
+
+3. Pydantic v2 Settings Parsing Failure on Comma-Separated Environment Lists
+   - Cause: pydantic-settings expects JSON-formatted arrays for List[str] fields. 
+     Standard comma-delimited strings in .env caused a fatal SettingsError at startup.
+   - Fix: Declared CORS_ORIGINS as Union[List[str], str] with a field validator that 
+     automatically parses comma-separated strings into clean lists.
+
+4. Hybrid RRF Precision Degradation on Multi-Hop Questions
+   - Cause: Reciprocal Rank Fusion naively merged 2-hop neighborhood expansion chunks 
+     (e.g., pulling paging fragmentation chunks when querying TLB miss formulas), 
+     diluting Precision@3 from 0.933 down to 0.533.
+   - Fix: Added relational edge filtering (prioritizing PREREQUISITE_OF and DEFINED_IN 
+     over RELATED_TO) and capped seed traversal by query embedding similarity.
+
+5. Cohen's Kappa Prevalence Paradox in Evaluation Rubrics
+   - Cause: Both human annotations and the LLM judge scored heavily in the top rating 
+     (score=5), causing expected agreement Pe to equal observed agreement Po (95%), 
+     collapsing Cohen's Kappa to 0.0 despite near-perfect rater alignment.
+   - Fix: Documented the prevalence paradox limitation, supplemented kappa with raw 
+     percentage agreement (95%) and within-1-pt tolerance (100%), and balanced edge cases.
+
+--------------------------------------------------------------------------------
+6. API ENDPOINTS REFERENCE
+--------------------------------------------------------------------------------
+Health & Observability:
+- GET /health/live       : Liveness check returning status 200 OK
+- GET /health/ready      : Readiness check verifying Qdrant Cloud and OpenRouter connectivity
+
+Documents & Ingestion:
+- POST /api/v1/documents/upload : Upload and index course PDF (Header: X-API-Key)
+- GET  /api/v1/documents        : List all indexed documents with chunk and page counts
+- GET  /api/v1/documents/{id}   : Retrieve detailed metadata for a specific document
+- DELETE /api/v1/documents/{id} : Delete document and remove points from Qdrant Cloud
+
+Chat & Question Answering:
+- POST /api/v1/chat/query : Query indexed documents with vector retrieval
+- GET  /ask               : Public multi-modal endpoint supporting mode=vector|graph|hybrid:
+  Example: /ask?query=Explain+TLB+miss+penalty&mode=hybrid&top_k=3
+
+--------------------------------------------------------------------------------
+7. REPRODUCIBILITY COMMANDS
+--------------------------------------------------------------------------------
+Environment Setup:
+$ python -m venv .venv
+$ .venv\Scripts\activate   # Windows (.venv/bin/activate on Linux/macOS)
+$ pip install -r requirements.txt
+$ cp .env.example .env     # Add OpenRouter & Qdrant credentials
+
+Run Code Quality & Automated Tests:
+$ ruff check .             # Zero lint errors across codebase
+$ pytest -v tests/         # 48 tests passed in 8.1 seconds (zero network calls)
+
+Run Unified Evaluation Suite:
+$ python -m eval.run_all   # Emits eval/reports/report.md and report.json
+
+Start API Server:
+$ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+Interactive Documentation: http://localhost:8000/docs
+================================================================================

@@ -18,3 +18,4 @@
 {"id": "gold_hop_012", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Dining philosophers asymmetric solution breaking circular wait."}
 {"id": "gold_unans_001", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Proper abstention on out-of-domain quantum computing query."}
 {"id": "gold_unans_002", "human_faithfulness": 5, "human_relevance": 5, "human_correctness": 5, "human_citation": 5, "human_notes": "Proper abstention on Roman aqueduct civil engineering query."}
+

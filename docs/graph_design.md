@@ -68,3 +68,4 @@ ExamRAG implements **Reciprocal Rank Fusion (RRF)** combining vector and graph r
 3. **Fusion (RRF)**:
    $$RRF(d) = \sum_{m \in \{\text{vector}, \text{graph}\}} \frac{1}{60 + \text{rank}_m(d)}$$
    Passages located on graph-traversed pages receive a rank promotion, directly overcoming the blind spots of vector search on multi-hop questions.
+
