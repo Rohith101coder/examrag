@@ -1,0 +1,371 @@
+[
+  {
+    "collection": "eval_retrieval_c500_o100",
+    "answerable_queries": 53,
+    "unanswerable_queries": 12,
+    "top_k": 5,
+    "metrics": {
+      "hit@1": 0.9623,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "precision@1": 0.9623,
+      "precision@3": 0.8113,
+      "precision@5": 0.6113,
+      "recall@1": 0.8868,
+      "recall@3": 0.9811,
+      "recall@5": 0.9906,
+      "ndcg@1": 0.9623,
+      "ndcg@3": 1.6824,
+      "ndcg@5": 1.9079,
+      "mrr": 0.9811,
+      "latency_ms": 263.7864
+    },
+    "eval_duration_seconds": 13.99,
+    "per_query_sample": [
+      {
+        "id": "gold_def_001",
+        "type": "definition",
+        "gold_pages": [
+          1
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          4,
+          5,
+          4
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 1200.94
+      },
+      {
+        "id": "gold_def_002",
+        "type": "definition",
+        "gold_pages": [
+          2
+        ],
+        "retrieved_pages": [
+          2,
+          1,
+          4,
+          1,
+          4
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0,
+        "latency_ms": 202.13
+      },
+      {
+        "id": "gold_def_003",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          2,
+          5,
+          5
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 210.42
+      },
+      {
+        "id": "gold_def_004",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          2,
+          1,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 209.34
+      },
+      {
+        "id": "gold_def_005",
+        "type": "definition",
+        "gold_pages": [
+          4
+        ],
+        "retrieved_pages": [
+          4,
+          4,
+          1,
+          4,
+          4
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 203.9
+      }
+    ],
+    "config_name": "Standard (500/100)",
+    "chunk_size": 500,
+    "chunk_overlap": 100
+  },
+  {
+    "collection": "eval_retrieval_c300_o50",
+    "answerable_queries": 53,
+    "unanswerable_queries": 12,
+    "top_k": 5,
+    "metrics": {
+      "hit@1": 0.9811,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "precision@1": 0.9811,
+      "precision@3": 0.8805,
+      "precision@5": 0.7396,
+      "recall@1": 0.9057,
+      "recall@3": 0.9906,
+      "recall@5": 1.0,
+      "ndcg@1": 0.9811,
+      "ndcg@3": 1.8002,
+      "ndcg@5": 2.1921,
+      "mrr": 0.9906,
+      "latency_ms": 255.0025
+    },
+    "eval_duration_seconds": 13.52,
+    "per_query_sample": [
+      {
+        "id": "gold_def_001",
+        "type": "definition",
+        "gold_pages": [
+          1
+        ],
+        "retrieved_pages": [
+          1,
+          1,
+          5,
+          4,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 874.77
+      },
+      {
+        "id": "gold_def_002",
+        "type": "definition",
+        "gold_pages": [
+          2
+        ],
+        "retrieved_pages": [
+          2,
+          1,
+          4,
+          4,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0,
+        "latency_ms": 215.09
+      },
+      {
+        "id": "gold_def_003",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          3,
+          3,
+          5
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 2.1309,
+        "latency_ms": 224.99
+      },
+      {
+        "id": "gold_def_004",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          3,
+          4,
+          2
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 2.1309,
+        "latency_ms": 561.87
+      },
+      {
+        "id": "gold_def_005",
+        "type": "definition",
+        "gold_pages": [
+          4
+        ],
+        "retrieved_pages": [
+          4,
+          4,
+          4,
+          1,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 2.1309,
+        "latency_ms": 303.32
+      }
+    ],
+    "config_name": "Fine-Grained (300/50)",
+    "chunk_size": 300,
+    "chunk_overlap": 50
+  },
+  {
+    "collection": "eval_retrieval_c750_o150",
+    "answerable_queries": 53,
+    "unanswerable_queries": 12,
+    "top_k": 5,
+    "metrics": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "precision@1": 1.0,
+      "precision@3": 0.7736,
+      "precision@5": 0.5283,
+      "recall@1": 0.9245,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "ndcg@1": 1.0,
+      "ndcg@3": 1.6347,
+      "ndcg@5": 1.7466,
+      "mrr": 1.0,
+      "latency_ms": 272.8351
+    },
+    "eval_duration_seconds": 14.47,
+    "per_query_sample": [
+      {
+        "id": "gold_def_001",
+        "type": "definition",
+        "gold_pages": [
+          1
+        ],
+        "retrieved_pages": [
+          1,
+          4,
+          1,
+          4,
+          5
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.5,
+        "latency_ms": 960.35
+      },
+      {
+        "id": "gold_def_002",
+        "type": "definition",
+        "gold_pages": [
+          2
+        ],
+        "retrieved_pages": [
+          2,
+          2,
+          4,
+          1,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 207.9
+      },
+      {
+        "id": "gold_def_003",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          5,
+          5,
+          2
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 204.52
+      },
+      {
+        "id": "gold_def_004",
+        "type": "definition",
+        "gold_pages": [
+          3
+        ],
+        "retrieved_pages": [
+          3,
+          3,
+          4,
+          5,
+          1
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 264.51
+      },
+      {
+        "id": "gold_def_005",
+        "type": "definition",
+        "gold_pages": [
+          4
+        ],
+        "retrieved_pages": [
+          4,
+          4,
+          1,
+          4,
+          2
+        ],
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.6309,
+        "latency_ms": 335.11
+      }
+    ],
+    "config_name": "Broad (750/150)",
+    "chunk_size": 750,
+    "chunk_overlap": 150
+  }
+]
